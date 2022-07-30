@@ -49,3 +49,22 @@ Uses REST API for more secure use.
     ```sh
     !steamid URL
     ```
+   
+## Examples
+
+1. Get ban by SteamID: 
+<p>
+<img src="https://i.imgur.com/0LChDI7.png"/>
+</p>
+
+
+2. Get ban by IP:
+<p>
+<img src="https://i.imgur.com/C98wDQg.png"/>
+</p>
+
+
+3. Get SteamID form profile URL:
+<p>
+<img src="https://i.imgur.com/WzM7yZh.png"/>
+</p>
