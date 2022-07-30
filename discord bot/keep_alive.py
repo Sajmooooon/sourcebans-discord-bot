@@ -1,3 +1,8 @@
+"""
+Author: https://replit.com/@Gargle/MinerMends-247-Discordpy-Tutorial#main.py
+Program to keep the bot alive.
+"""
+
 from flask import Flask
 from threading import Thread
 
