@@ -1,3 +1,9 @@
+"""
+Author: Bc. Simon Youssef
+Coppyright 2022 All Rights Reserved.
+Discord bot for showing sourcebans on discord.
+"""
+
 import datetime
 import json
 import urllib.request
@@ -11,7 +17,11 @@ client = discord.Client()
 
 
 class Ban(object):
+    """The Ban class."""
+
     def __init__(self):
+        """"The constructor for Ban class."""
+
         self.name = str()
         self.reason = str()
         self.admin = str()
@@ -22,11 +32,15 @@ class Ban(object):
 
 @client.event
 async def on_ready():
+    """The event to check if the bot is logged in."""
+
     print("Working {0.user}".format(client))
 
 
 @client.event
 async def on_message(message):
+    """The event to chat command detection and reply."""
+
     user_message = str(message.content)
 
     if message.author == client.user:
@@ -76,6 +90,8 @@ async def on_message(message):
 
 
 async def get_json(link, message, embed):
+    """The function to get json from website."""
+
     try:
         with urllib.request.urlopen(link) as url:
             try:
@@ -96,6 +112,8 @@ async def get_json(link, message, embed):
 
 
 async def get_data(data, ban_info):
+    """The function to get information about ban from data."""
+
     ban_info.name = str(data["name"])
     ban_info.reason = str(data["reason"])
     ban_info.admin = str(data["user"])
@@ -106,6 +124,8 @@ async def get_data(data, ban_info):
 
 
 def get_message(ban_info):
+    """"The function to get message about ban."""
+
     mess = (
         f' [View on Sourcebans]({SOURCEBANS}{ban_info.steamID})\n'
         f'**Name:** {ban_info.name}\n'
@@ -123,15 +143,21 @@ def get_message(ban_info):
 
 
 def get_human_time(unix_time):
+    """"The function for converting unix time to human datetime."""
+
     return datetime.datetime.fromtimestamp(int(unix_time)).strftime(
         '%d-%m-%Y %H:%M:%S')
 
 
 def convert_time(time):
+    """"The function for converting seconds to datetime."""
+
     return str(datetime.timedelta(seconds=time))
 
 
 def get_steamid(user_link):
+    """"The function for converting steam profile link to steamID."""
+
     steamID64 = steamid.steam64_from_url(f'{user_link}')
     if (steamID64):
         return Converter.to_steamID(steamID64)
@@ -139,6 +165,8 @@ def get_steamid(user_link):
 
 
 def convert_steamid(steamID):
+    """"The function for converting steamID to correct form."""
+
     return steamID.replace("STEAM_0", "STEAM_1")
 
 
