@@ -22,7 +22,7 @@ Uses REST API for more secure use.
 
 1. Install packages:
     ```sh
-    npm i discord.js
+   pip install discord.py
    pip install steamid-converter
    pip install -U 'steam[client]'
    pip install Flask
