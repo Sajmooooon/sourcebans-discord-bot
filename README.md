@@ -33,3 +33,19 @@ Uses REST API for more secure use.
    SOURCEBANS - add your link for your sourcebans ("https://your-sourcebans.com/index.php?p=banlist&searchText=")
    WEBSITE - add your link for your website from webserver file ("https://your-website.com/index.php")
     ```
+
+
+## Commands
+
+1. Get ban by SteamID:
+    ```sh
+    !getban SteamID
+    ```
+2. Get ban by IP:
+    ```sh
+    !getbanip IP
+    ```
+3. Get SteamID form profile URL:
+    ```sh
+    !steamid URL
+    ```
