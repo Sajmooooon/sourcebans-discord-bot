@@ -13,7 +13,12 @@ Uses REST API for more secure use.
 
 ### Webserver
 
-1. Add files to your webserver:
+1. Add database:
+    ```sh
+    In `webserver/classes/helper/config.php` add your database details.
+    ```
+   
+2. Add files to your webserver:
     ```sh
     Add files from `webserver` to your page.
     ```
