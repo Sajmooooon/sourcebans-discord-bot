@@ -29,7 +29,7 @@ Uses REST API for more secure use.
     ```sh
    pip install discord.py
    pip install steamid-converter
-   pip install -U 'steam[client]'
+   pip install steamclient
    pip install Flask
     ```
 2. Add your links and token in main.py:
