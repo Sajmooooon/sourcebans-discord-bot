@@ -19,15 +19,15 @@ client = discord.Client()
 class Ban(object):
     """The Ban class."""
 
-    def __init__(self):
+    def __init__(self, data):
         """"The constructor for Ban class."""
 
-        self.name = str()
-        self.reason = str()
-        self.admin = str()
-        self.steamID = str()
-        self.length = int()
-        self.date = int()
+        self.name = str(data["name"])
+        self.reason = str(data["reason"])
+        self.admin = str(data["user"])
+        self.steamID = str(data["authid"])
+        self.length = int(data["length"])
+        self.date = get_human_time(data["created"])
 
 
 @client.event
@@ -48,7 +48,7 @@ async def on_message(message):
     embed = discord.Embed()
     embed.description = ""
     line = user_message.split(' ')
-    ban_info = Ban()
+    # ban_info = Ban()
 
     if line[0].lower() == '!getban' and len(line) == 2:
         steamID = convert_steamid(line[1])
@@ -58,8 +58,8 @@ async def on_message(message):
 
         if not ban:
             return
-
-        await get_data(ban, ban_info)
+        ban_info = Ban(ban)
+        # await get_data(ban, ban_info)
         embed.description += get_message(ban_info)
         await message.channel.send(embed=embed)
 
@@ -73,7 +73,8 @@ async def on_message(message):
             return
 
         for ban in bans:
-            await get_data(ban, ban_info)
+            # await get_data(ban, ban_info)
+            ban_info = Ban(ban)
             embed.description += get_message(ban_info)
         await message.channel.send(embed=embed)
 
@@ -109,18 +110,6 @@ async def get_json(link, message, embed):
         return
 
     return bans
-
-
-async def get_data(data, ban_info):
-    """The function to get information about ban from data."""
-
-    ban_info.name = str(data["name"])
-    ban_info.reason = str(data["reason"])
-    ban_info.admin = str(data["user"])
-    ban_info.steamID = str(data["authid"])
-    ban_info.length = int(data["length"])
-    ban_info.date = get_human_time(data["created"])
-    return ban_info
 
 
 def get_message(ban_info):
